@@ -1,0 +1,18 @@
+@import '../../../index.scss';
+
+.navBody {
+	&__list {
+		display: flex;
+		flex-direction: row;
+		gap: 20px;
+		flex: 1 1 auto;
+	}
+	&__link {
+		color: $Grayish_violet;
+		transition: all 0.3s ease-in;
+		&:hover {
+			color: $VeryDark_violet;
+			transition: all 0.3s ease-out;
+		}
+	}
+}

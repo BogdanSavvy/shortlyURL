@@ -1,0 +1,18 @@
+@import '../../../index.scss';
+
+.oval_btn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	background-color: $Cyan;
+	padding: 15px 25px;
+	border-radius: 50px;
+	letter-spacing: 1px;
+	color: #fff;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	&:hover {
+		opacity: 0.6;
+		transition: all 0.3s ease;
+	}
+}
