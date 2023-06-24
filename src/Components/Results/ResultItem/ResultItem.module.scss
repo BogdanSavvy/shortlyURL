@@ -1,0 +1,26 @@
+@import '../../../index.scss';
+
+.container {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+	column-gap: 15px;
+	padding: 15px 20px;
+}
+.oldLink {
+	flex: 1 1 70%;
+	font-size: 18px;
+	color: $VeryDark_violet;
+}
+.result {
+	flex: 1 1 30%;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+   justify-self: flex-end;
+	column-gap: 15px;
+	&__newLink {
+		color: $Cyan;
+	}
+}

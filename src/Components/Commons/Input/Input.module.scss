@@ -1,0 +1,31 @@
+@import '../../../index.scss';
+
+.input {
+	padding: 15px 20px;
+	font-size: 18px;
+	border-radius: 10px;
+	color: $VeryDark_violet;
+	width: 100%;
+	
+}
+
+.error {
+	transition: all 0.2s ease;
+	border: 1.5px solid $Red;
+	-webkit-box-shadow: 0px 0px 25px 1px $Red;
+	-moz-box-shadow: 0px 0px 25px 1px $Red;
+	box-shadow: 0px 0px 25px 1px $Red;
+	::placeholder {
+		color: $Red;
+	}
+}
+
+.errorMessage {
+	position: absolute;
+	letter-spacing: 0.6px;
+	transform: translate(10px, -30px);
+	font-size: 16px;
+	color: $Red;
+	line-height: 150%;
+	font-style: italic;
+}

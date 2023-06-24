@@ -1,0 +1,30 @@
+@import "../../index.scss";
+
+.container{
+   padding-top: 300px;
+   display: flex;
+   flex-direction: row;
+   justify-content: space-between;
+   align-items: center;
+}
+.description{
+   h1{
+      font-size: 64px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      line-height: 125%;
+      color: $VeryDark_violet;
+   }
+   p{
+      font-size: 22px;
+      line-height: 145%;
+      color: $Grayish_violet;
+      &:not(:last-child){
+         margin-bottom: 30px;
+      }
+   }
+}
+.image{
+   object-fit: cover;
+   transform: translateX(30%);
+}
