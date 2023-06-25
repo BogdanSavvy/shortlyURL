@@ -1,19 +1,24 @@
 @import '../../index.scss';
 
-.container {
-   margin-top: 250px;
-   transform: translateY(-50px);
-	padding: 60px;
-	background-color: $Dark_violet;
-	border-radius: 15px;
-	form {
-		display: flex;
-		column-gap: 25px;
-		input {
-			flex: 0 1 85%;
-		}
-		button {
-			flex: 0 1 15%;
+.shortener {
+	margin-top: 250px;
+	transform: translateY(-50px);
+
+	&__container {
+		padding: 60px;
+		background-color: $Dark_violet;
+		border-radius: 15px;
+		position: relative;
+		overflow: hidden;
+		form {
+			display: flex;
+			column-gap: 25px;
+			input {
+				flex: 0 1 85%;
+			}
+			button {
+				flex: 0 1 15%;
+			}
 		}
 	}
 }

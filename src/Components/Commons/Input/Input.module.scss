@@ -6,16 +6,15 @@
 	border-radius: 10px;
 	color: $VeryDark_violet;
 	width: 100%;
-	
 }
 
 .error {
 	transition: all 0.2s ease;
 	border: 1.5px solid $Red;
-	-webkit-box-shadow: 0px 0px 25px 1px $Red;
-	-moz-box-shadow: 0px 0px 25px 1px $Red;
-	box-shadow: 0px 0px 25px 1px $Red;
-	::placeholder {
+	-webkit-box-shadow: 0px 0px 15px 1px $Red;
+	-moz-box-shadow: 0px 0px 15px 1px $Red;
+	box-shadow: 0px 0px 15px 1px $Red;
+	&::placeholder {
 		color: $Red;
 	}
 }
