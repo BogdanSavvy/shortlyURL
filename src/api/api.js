@@ -5,5 +5,5 @@ const instance = axios.create({
 });
 
 export const getShortenLink = link => {
-	return instance.get(`shorten?url=${link}`).then(responce => responce.data)
+	return instance.get(`shorten?url=${link}`);
 };

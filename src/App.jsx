@@ -14,7 +14,7 @@ const App = () => {
 			<Header />
 			<div className={style.container}>
 				<Description />
-				<Shortener setShortenLinks={setShortenLinks} />
+				<Shortener setShortenLinks={setShortenLinks} shortenLinks={shortenLinks} />
 				<Results shortenLinks={shortenLinks} />
 				<Statistic />
 			</div>
