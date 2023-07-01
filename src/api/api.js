@@ -4,7 +4,6 @@ const instance = axios.create({
 	baseURL: 'https://api.shrtco.de/v2/',
 });
 
-export const getShortenLink = async link => {
-	const response = await instance.get(`shorten?url=${link}`);
-	return response;
+export const getShortenLink = link => {
+	return instance.get(`shorten?url=${link}`).then(responce => responce.data)
 };

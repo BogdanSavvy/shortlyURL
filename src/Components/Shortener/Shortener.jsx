@@ -5,17 +5,17 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { getShortenLink } from '../../api/api';
 
-const Shortener = () => {
+const Shortener = ({setShortenLinks}) => {
 	const formik = useFormik({
 		initialValues: { link: '' },
 		onSubmit: values => {
-			console.log('submit', values);
-			getShortenLink(values.link);
+			//setShortenLinks(getShortenLink(values.link))
 		},
 		validationSchema: Yup.object().shape({
 			link: Yup.string().required('This field is required'),
 		}),
 	});
+
 
 	return (
 		<div className={style.shortener}>
