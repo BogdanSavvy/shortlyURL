@@ -9,15 +9,17 @@ const Shortener = ({ setShortenLinks, shortenLinks }) => {
 	const formik = useFormik({
 		initialValues: { link: '' },
 		onSubmit: values => {
-			getShortenLink(values.link).then(
-				res => res.data.ok && setShortenLinks([...shortenLinks, res.data.result])
-			);
+			getShortenLink(values.link)
+				.then(res => res.data.ok && setShortenLinks([...shortenLinks, res.data.result]))
+				.catch(err => {
+					console.error(err.response.data.error);
+				});
+			values.link = '';
 		},
 		validationSchema: Yup.object().shape({
 			link: Yup.string().required('This field is required'),
 		}),
 	});
-
 	return (
 		<div className={style.shortener}>
 			<div className={style.shortener__container}>
