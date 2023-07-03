@@ -4,6 +4,7 @@ import { RoundedButton } from '../Commons/RoundedButton/RoundedButton';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { getShortenLink } from '../../api/api';
+import wavesBg from '../../images/bg-shorten-desktop.svg';
 
 const Shortener = ({ setShortenLinks, shortenLinks }) => {
 	const formik = useFormik({
@@ -23,6 +24,7 @@ const Shortener = ({ setShortenLinks, shortenLinks }) => {
 	return (
 		<div className={style.shortener}>
 			<div className={style.shortener__container}>
+				<img src={wavesBg} alt="wavesBg" />
 				<form onSubmit={formik.handleSubmit}>
 					<Input
 						errors={formik.errors}
