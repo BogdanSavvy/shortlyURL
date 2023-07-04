@@ -1,11 +1,12 @@
 @import '../../../index.scss';
 
 .input {
-	padding: 15px 20px;
+	padding: 15px;
+	min-height: 50px;
+	width: 100%;
 	font-size: 18px;
 	border-radius: 10px;
 	color: $VeryDark_violet;
-	width: 100%;
 }
 
 .error {

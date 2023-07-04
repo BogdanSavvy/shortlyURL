@@ -1,29 +1,87 @@
-@import "../../index.scss";
+@import '../../index.scss';
 
-.container{
-   padding-top: 300px;
-   display: flex;
-   flex-direction: row;
-   justify-content: space-between;
-   align-items: center;
+.container {
+	padding-top: 330px;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	flex-wrap: wrap;
+	@media (max-width: 1023.98px) {
+		padding-top: 300px;
+	}
+	@media (max-width: 768px) {
+		flex-wrap: wrap-reverse;
+		gap: 50px;
+		padding-top: 150px;
+	}
 }
-.description{
-   h1{
-      font-size: 64px;
-      font-weight: 700;
-      letter-spacing: 0.5px;
-      line-height: 125%;
-      color: $VeryDark_violet;
-   }
-   p{
-      font-size: 22px;
-      line-height: 145%;
-      color: $Grayish_violet;
-      &:not(:last-child){
-         margin-bottom: 30px;
-      }
-   }
+.description {
+	flex: 0 1 50%;
+	@media (max-width: 768px) {
+		flex: 0 1 100%;
+		text-align: center;
+	}
+	h1 {
+		font-size: 64px;
+		font-weight: 700;
+		letter-spacing: 0.5px;
+		line-height: 125%;
+		color: $VeryDark_violet;
+		&:not(:last-child) {
+			margin-bottom: 25px;
+		}
+		@media (max-width: 1023.98px) {
+			font-size: 48px;
+		}
+		@media (max-width: 768px) {
+			font-size: 42px;
+			&:not(:last-child) {
+				margin-bottom: 20px;
+			}
+		}
+		@media (max-width: 423.98px) {
+			font-size: 34px;
+			&:not(:last-child) {
+				margin-bottom: 10px;
+			}
+		}
+	}
+	p {
+		font-size: 22px;
+		line-height: 145%;
+		color: $Grayish_violet;
+		&:not(:last-child) {
+			margin-bottom: 30px;
+		}
+		@media (max-width: 1200px) {
+			font-size: 20px;
+		}
+		@media (max-width: 1023.98px) {
+			font-size: 16px;
+			&:not(:last-child) {
+				margin-bottom: 20px;
+			}
+		}
+		@media (max-width: 423.98px) {
+			font-size: 14px;
+			&:not(:last-child) {
+				margin-bottom: 15px;
+			}
+		}
+	}
 }
-.image{
-   transform: translateX(30%);
+.image {
+	flex: 0 1 50%;
+	@media (max-width: 768px) {
+		flex: 0 1 100%;
+	}
+	img {
+		width: 100%;
+		object-fit: cover;
+	}
+	@media (max-width: 768px) {
+		transform: translateX(15%);
+	}
+	transform: translateX(20%);
 }

@@ -10,16 +10,17 @@ import { useState } from 'react';
 const App = () => {
 	const [shortenLinks, setShortenLinks] = useState([]);
 	return (
-		<div className={style.wrapper}>
+		<>
 			<Header />
-			<div className={style.container}>
+			<div className={style.wrapper}>
 				<Description />
 				<Shortener setShortenLinks={setShortenLinks} shortenLinks={shortenLinks} />
 				<Results shortenLinks={shortenLinks} />
 				<Statistic />
 			</div>
+
 			<Footer />
-		</div>
+		</>
 	);
 };
 

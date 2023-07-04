@@ -5,34 +5,60 @@
 	flex-direction: row;
 	align-items: center;
 	justify-content: space-between;
-	column-gap: 15px;
-	padding: 15px 20px;
+	gap: 35px;
+	padding: 20px;
 	background-color: #ffff;
 	border-radius: 15px;
 	-webkit-box-shadow: 0px 0px 10px 1px $Grayish_violet;
 	-moz-box-shadow: 0px 0px 10px 1px $Grayish_violet;
 	box-shadow: 0px 0px 10px 1px $Grayish_violet;
+	position: relative;
+	@media (max-width: 686.98px) {
+		flex-direction: column;
+		padding: 15px;
+		align-items: flex-start;
+	}
+	@media (max-width: 425px) {
+		gap: 25px;
+	}
 }
 .oldLink {
 	flex: 1 1 80%;
 	font-size: 18px;
 	color: $VeryDark_violet;
+	@media (max-width: 686.98px) {
+		font-size: 16px;
+		&::before {
+			content: '';
+			position: absolute;
+			left: 0;
+			bottom: 70%;
+			width: 100%;
+			height: 2px;
+			background-color: $Grayish_violet;
+		}
+	}
 }
 .result {
 	flex: 1 1 20%;
 	display: flex;
 	flex-direction: row;
 	align-items: center;
-	justify-self: flex-end;
-	column-gap: 15px;
+	gap: 25px;
+	width: 100%;
+	@media (max-width: 686.98px) {
+		flex-direction: column;
+		gap: 20px;
+		align-items: flex-start;
+	}
+	@media (max-width: 425px) {
+		gap: 18px;
+	}
 	&__newLink {
 		color: $Cyan;
 		flex: 1 1 auto;
 	}
 	button {
-		display: flex;
-		flex-direction: row;
-		align-items: center;
 		gap: 5px;
 	}
 }

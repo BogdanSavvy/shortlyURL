@@ -7,10 +7,12 @@ const Header = () => {
 	return (
 		<header className={style.header}>
 			<Logo className={style.header__logo} />
-			<Navigation className={style.header__navigation} />
-			<div className={style.header__action}>
-				<OvalButton>Login</OvalButton>
-				<OvalButton>Sign up</OvalButton>
+			<div className={style.header__menuBody}>
+				<Navigation />
+				<div className={style.header__action}>
+					<OvalButton>Login</OvalButton>
+					<OvalButton>Sign up</OvalButton>
+				</div>
 			</div>
 		</header>
 	);
