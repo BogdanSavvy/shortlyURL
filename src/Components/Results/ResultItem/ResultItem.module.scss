@@ -24,10 +24,17 @@
 }
 .oldLink {
 	flex: 1 1 80%;
+	display: block;
 	font-size: 18px;
 	color: $VeryDark_violet;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
 	@media (max-width: 686.98px) {
+		flex: 1 1 100%;
 		font-size: 16px;
+		justify-self: center;
+		margin-top: 10px;
 		&::before {
 			content: '';
 			position: absolute;
@@ -38,6 +45,12 @@
 			background-color: $Grayish_violet;
 		}
 	}
+	@media (max-width: 531.98px) {
+		width: 380px;
+	}
+	@media (max-width: 424.98px) {
+		width: 250px;
+	}
 }
 .result {
 	flex: 1 1 20%;
@@ -47,6 +60,8 @@
 	gap: 25px;
 	width: 100%;
 	@media (max-width: 686.98px) {
+		margin-top: 5px;
+		flex: 1 1 100%;
 		flex-direction: column;
 		gap: 20px;
 		align-items: flex-start;

@@ -9,10 +9,24 @@
 	border-radius: 50px;
 	letter-spacing: 1px;
 	color: #fff;
+	font-weight: 700;
 	cursor: pointer;
 	transition: all 0.3s ease;
 	&:hover {
 		opacity: 0.6;
+		transition: all 0.3s ease;
+	}
+	@media (max-width: 767.98px) {
+		font-size: 16px;
+	}
+}
+.mod {
+	background-color: transparent;
+	color: $Dark_violet;
+	font-size: 16px;
+	&:hover {
+		background-color: $Cyan;
+		color: #fff;
 		transition: all 0.3s ease;
 	}
 }

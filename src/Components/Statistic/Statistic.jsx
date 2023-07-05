@@ -7,8 +7,8 @@ const Statistic = () => {
 		<div className={style.container}>
 			<h2>Advanced statistics</h2>
 			<p>
-				Track how your links are performing across the web with <br /> our advanced
-				statistics dashboard.
+				Track how your links are performing across the web with <br/> our advanced statistics
+				dashboard.
 			</p>
 			<div className={style.statistic}>
 				<div className={style.statistic__card}>

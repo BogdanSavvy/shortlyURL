@@ -1,21 +1,56 @@
 @import '../../index.scss';
 
 .container {
-	margin: 150px;
+	margin-top: 150px;
+	@media (max-width: 768px) {
+		margin-top: 100px;
+	}
+	@media (max-width: 423.98px) {
+		margin-top: 70px;
+	}
 	h2 {
 		text-align: center;
 		font-size: 55px;
 		color: $VeryDark_violet;
 		line-height: 150%;
 		font-weight: 700;
+		&:not(:last-child) {
+			margin-bottom: 30px;
+		}
+		@media (max-width: 1023.98px) {
+			font-size: 48px;
+		}
+		@media (max-width: 768px) {
+			font-size: 42px;
+			&:not(:last-child) {
+				margin-bottom: 20px;
+			}
+		}
+		@media (max-width: 423.98px) {
+			font-size: 34px;
+			&:not(:last-child) {
+				margin-bottom: 10px;
+			}
+		}
 	}
 	p {
 		text-align: center;
-		font-size: 18px;
 		color: $Gray;
 		line-height: 165%;
 		&:not(:last-child) {
 			margin-bottom: 100px;
+		}
+		@media (max-width: 1023.98px) {
+			font-size: 16px;
+			&:not(:last-child) {
+				margin-bottom: 80px;
+			}
+		}
+		@media (max-width: 423.98px) {
+			font-size: 14px;
+			&:not(:last-child) {
+				margin-bottom: 65px;
+			}
 		}
 	}
 }
@@ -25,6 +60,10 @@
 	display: flex;
 	flex-direction: row;
 	gap: 25px;
+	@media (max-width: 767.98px) {
+		flex-wrap: wrap;
+		justify-content: center;
+	}
 	&::before {
 		content: '';
 		position: absolute;
@@ -34,9 +73,15 @@
 		width: 100%;
 		background-color: $Cyan;
 		z-index: -1;
+		@media (max-width: 767.98px) {
+			top: 0;
+			left: calc(50% - 2.5px);
+			height: 100%;
+			width: 5px;
+		}
 	}
 	&__card {
-		flex: 1 0 33.333%;
+		flex: 0 1 33.333%;
 		background-color: #ffff;
 		-webkit-box-shadow: 0px 0px 10px 1px $Grayish_violet;
 		-moz-box-shadow: 0px 0px 10px 1px $Grayish_violet;
@@ -48,8 +93,22 @@
 		&:nth-child(3) {
 			transform: translateY(90px);
 		}
+		@media (max-width: 767.98px) {
+			flex: 0 1 70%;
+			text-align: center;
+		}
+		@media (max-width: 525px) {
+			flex: 0 1 100%;
+			&:nth-child(2) {
+				transform: translateY(30px);
+			}
+			&:nth-child(3) {
+				transform: translateY(75px);
+			}
+		}
 	}
 	&__icon {
+		flex: 0 0 50px;
 		display: inline-flex;
 		justify-content: center;
 		align-items: center;
@@ -57,6 +116,9 @@
 		border-radius: 50%;
 		background-color: $Dark_violet;
 		transform: translateY(-50%);
+		@media (max-width: 525px) {
+			transform: translateY(-30%);
+		}
 	}
 	&__description {
 		h3 {
@@ -67,11 +129,17 @@
 			&:not(:last-child) {
 				margin-bottom: 15px;
 			}
+			@media (max-width: 1023.98px) {
+				font-size: 18px;
+			}
 		}
 		p {
 			text-align: start;
 			color: $Gray;
 			line-height: 150%;
+			@media (max-width: 1023.98px) {
+				font-size: 16px;
+			}
 		}
 	}
 }
