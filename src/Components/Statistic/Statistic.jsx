@@ -2,6 +2,7 @@ import style from './Statistic.module.scss';
 import recognitionImg from '../../images/icon-brand-recognition.svg';
 import recordsImg from '../../images/icon-detailed-records.svg';
 import customizableImg from '../../images/icon-fully-customizable.svg';
+
 const Statistic = () => {
 	return (
 		<div className={style.container}>

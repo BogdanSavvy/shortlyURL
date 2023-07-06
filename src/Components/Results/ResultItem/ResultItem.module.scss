@@ -30,6 +30,7 @@
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
+	padding: 5px 0;
 	@media (max-width: 686.98px) {
 		flex: 1 1 100%;
 		font-size: 16px;
@@ -74,6 +75,10 @@
 		flex: 1 1 auto;
 	}
 	button {
-		gap: 5px;
+		gap: 6px;
+		width: 100px;
+		@media (max-width: 686.98px) {
+			width: 100%;
+		}
 	}
 }

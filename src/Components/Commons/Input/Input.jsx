@@ -4,7 +4,9 @@ export const Input = ({ name, value, onChange, errors, touched }) => {
 	return (
 		<>
 			<input
-				className={`${style.input} ${errors && touched.link ? style.error : ''}`}
+				className={`${style.input} ${
+					!value && errors && touched.link ? style.error : ''
+				}`}
 				type="text"
 				placeholder="Shorten a link here..."
 				name={name}

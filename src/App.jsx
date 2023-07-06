@@ -11,14 +11,13 @@ const App = () => {
 	const [shortenLinks, setShortenLinks] = useState([]);
 	return (
 		<>
-			<Header />
 			<div className={style.wrapper}>
+				<Header />
 				<Description />
 				<Shortener setShortenLinks={setShortenLinks} shortenLinks={shortenLinks} />
 				<Results shortenLinks={shortenLinks} />
 				<Statistic />
 			</div>
-
 			<Footer />
 		</>
 	);

@@ -1,8 +1,8 @@
 import style from './Header.module.scss';
-import { OvalButton } from '../Commons/OvalButton/OvalButton';
-import logo from '../../images/logo.svg';
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import { OvalButton } from '../Commons/OvalButton/OvalButton';
+import logo from '../../images/logo.svg';
 
 const Header = () => {
 	const [isActive, setIsActive] = useState(false);
@@ -42,7 +42,7 @@ const Header = () => {
 						</div>
 					</nav>
 					<div
-						class={`${style.header__burger} ${isActive ? style.opened : ''}`}
+						className={`${style.header__burger} ${isActive ? style.opened : ''}`}
 						onClick={toggleBurger}>
 						<span></span>
 					</div>

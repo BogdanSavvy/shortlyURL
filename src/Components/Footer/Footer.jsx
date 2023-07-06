@@ -1,6 +1,7 @@
 import style from './Footer.module.scss';
 import { OvalButton } from '../Commons/OvalButton/OvalButton';
 import wavesBg from '../../images/bg-boost-desktop.svg';
+
 const Footer = () => {
 	return (
 		<div className={style.container}>

@@ -1,9 +1,9 @@
 import style from './Shortener.module.scss';
+import * as Yup from 'yup';
+import { getShortenLink } from '../../api/api';
 import { Input } from '../Commons/Input/Input';
 import { RoundedButton } from '../Commons/RoundedButton/RoundedButton';
 import { useFormik } from 'formik';
-import * as Yup from 'yup';
-import { getShortenLink } from '../../api/api';
 import wavesBg from '../../images/bg-shorten-desktop.svg';
 
 const Shortener = ({ setShortenLinks, shortenLinks }) => {

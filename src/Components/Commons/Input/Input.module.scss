@@ -7,6 +7,9 @@
 	font-size: 18px;
 	border-radius: 10px;
 	color: $VeryDark_violet;
+	@media (max-width: 767.98px){
+		font-size: 16px;
+	}
 }
 
 .error {
