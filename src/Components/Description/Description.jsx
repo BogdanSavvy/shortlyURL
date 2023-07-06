@@ -2,7 +2,7 @@ import style from './Description.module.scss';
 import { OvalButton } from '../Commons/OvalButton/OvalButton';
 import illustration from '../../images/illustration-working.svg';
 
-const Description = () => {
+const Description = ({ scrollToElement }) => {
 	return (
 		<div className={style.container}>
 			<div className={style.description}>
@@ -11,7 +11,7 @@ const Description = () => {
 					Build your brand's recognition and get detailed <br /> insights on how your
 					links are performing.
 				</p>
-				<OvalButton>Get Started</OvalButton>
+				<OvalButton onClick={scrollToElement}>Get Started</OvalButton>
 			</div>
 			<div className={style.image}>
 				<img src={illustration} alt="work_illustration" />

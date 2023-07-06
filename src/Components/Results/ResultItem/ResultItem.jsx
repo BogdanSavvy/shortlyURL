@@ -4,38 +4,61 @@ import { RoundedButton } from '../../Commons/RoundedButton/RoundedButton';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCopy } from '@fortawesome/free-regular-svg-icons';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
+import { Snackbar, Alert } from '@mui/material';
 
 const ResultItem = ({ originalLink, shortLink }) => {
 	const [isCopied, setIsCopied] = useState(false);
+	const [open, setOpen] = useState(false);
+
 	const copyText = text => {
 		navigator.clipboard
 			.writeText(text)
 			.then(() => {
-				console.log('Текст скопійовано!');
 				setIsCopied(true);
+				setOpen(true);
 			})
 			.catch(err => {
 				console.error('Помилка копіювання тексту: ', err);
+				setOpen(true);
 			});
 	};
+
+	const handleClose = (event, reason) => {
+		if (reason === 'clickaway') {
+			return;
+		}
+		setOpen(false);
+	};
+
 	return (
-		<div className={style.container}>
-			<div className={style.oldLink}>{originalLink}</div>
-			<div className={style.result}>
-				<div className={style.result__newLink}>{shortLink}</div>
-				<RoundedButton isCopied={isCopied} onClick={() => copyText(shortLink)}>
-					{!isCopied ? (
-						<>
-							Copy <FontAwesomeIcon size="lg" icon={faCopy} />
-						</>
-					) : (
-						<>
-							Copied <FontAwesomeIcon size="lg" icon={faCheck} />
-						</>
-					)}
-				</RoundedButton>
+		<>
+			<div className={style.container}>
+				<div className={style.oldLink}>{originalLink}</div>
+				<div className={style.result}>
+					<div className={style.result__newLink}>{shortLink}</div>
+					<RoundedButton isCopied={isCopied} onClick={() => copyText(shortLink)}>
+						{!isCopied ? (
+							<>
+								Copy <FontAwesomeIcon size="lg" icon={faCopy} />
+							</>
+						) : (
+							<>
+								Copied <FontAwesomeIcon size="lg" icon={faCheck} />
+							</>
+						)}
+					</RoundedButton>
+				</div>
 			</div>
-		</div>
+			<Snackbar
+				anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+				open={open}
+				autoHideDuration={3000}
+				onClose={handleClose}>
+				<Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
+					Your short link has been copied successfully!
+				</Alert>
+			</Snackbar>
+		</>
 	);
 };
 

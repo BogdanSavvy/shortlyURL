@@ -10,7 +10,7 @@
 	}
 	h2 {
 		text-align: center;
-		font-size: 55px;
+		font-size: 64px;
 		color: $VeryDark_violet;
 		line-height: 150%;
 		font-weight: 700;
@@ -38,12 +38,12 @@
 		color: $Gray;
 		line-height: 165%;
 		&:not(:last-child) {
-			margin-bottom: 100px;
+			margin-bottom: 140px;
 		}
 		@media (max-width: 1023.98px) {
 			font-size: 16px;
 			&:not(:last-child) {
-				margin-bottom: 80px;
+				margin-bottom: 90px;
 			}
 		}
 		@media (max-width: 423.98px) {
