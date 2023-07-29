@@ -1,6 +1,6 @@
 import style from './Description.module.scss';
-import { OvalButton } from '../Commons/OvalButton/OvalButton';
-import illustration from '../../images/illustration-working.svg';
+import { OvalButton } from '../../Commons/OvalButton/OvalButton';
+import illustration from '../../../images/illustration-working.svg';
 
 const Description = ({ scrollToElement }) => {
 	return (

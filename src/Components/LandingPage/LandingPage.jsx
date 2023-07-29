@@ -1,9 +1,9 @@
 import style from './LanfingPage.module.scss';
-import Description from '../Description/Description';
+import Description from './Description/Description';
 import Shortener from '../Shortener/Shortener';
 import Results from '../Results/Results';
 import Statistic from './Statistic/Statistic';
-import Footer from '../Footer/Footer';
+import Footer from './Footer/Footer';
 
 const LandingPage = ({ scrollToElement, myRef, setShortenLinks, shortenLinks }) => {
 	return (
