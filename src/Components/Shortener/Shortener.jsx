@@ -56,7 +56,7 @@ const Shortener = ({ setShortenLinks, shortenLinks, myRef }) => {
 			<Snackbar
 				open={showSnackBar}
 				onClose={handleClose}
-				autoHideDuration={4000}
+				autoHideDuration={5000}
 				TransitionComponent={TransitionRight}>
 				<Alert onClose={handleClose} severity="error" sx={{ width: '100%' }}>
 					{serverMessage}

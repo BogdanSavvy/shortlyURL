@@ -2,6 +2,7 @@
 
 .container {
 	padding-top: 330px;
+	margin-bottom: 300px;
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
@@ -14,9 +15,11 @@
 		flex-wrap: wrap-reverse;
 		gap: 50px;
 		padding-top: 150px;
+		margin-bottom: 180px;
 	}
 	@media (max-width: 424.98px) {
 		padding-top: 120px;
+		margin-bottom: 100px;
 	}
 }
 .description {

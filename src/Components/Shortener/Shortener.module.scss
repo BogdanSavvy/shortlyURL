@@ -1,14 +1,6 @@
 @import '../../index.scss';
 
 .shortener {
-	margin-top: 300px;
-	margin-bottom: 30px;
-	@media (max-width: 768px) {
-		margin-top: 180px;
-	}
-	@media (max-width: 424.98px) {
-		margin-top: 100px;
-	}
 	&__container {
 		position: relative;
 		z-index: 2;

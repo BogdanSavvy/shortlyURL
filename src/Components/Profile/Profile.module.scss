@@ -1,0 +1,70 @@
+@import '../../index.scss';
+
+.wrapper {
+	max-width: 1440px;
+	margin: 0 auto;
+	padding: 0 15px;
+}
+.container {
+	padding-top: 120px;
+	width: 100%;
+	display: flex;
+	gap: 20px;
+	@media (max-width: 1023.98px) {
+		flex-wrap: wrap;
+	}
+}
+.profileCard {
+	padding: 15px;
+	flex: 0 1 25%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 15px;
+	border-radius: 15px;
+	background-color: $Gray;
+	@media (max-width: 1023.98px) {
+		flex: 1 1 100%;
+	}
+	&__avatar {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: center;
+		gap: 10px;
+		p {
+			color: $VeryDark_violet;
+		}
+	}
+	&__email {
+		flex: 1 1 auto;
+		color: $VeryDark_violet;
+		@media (max-width: 424.98px) {
+			font-size: 16px;
+		}
+	}
+	&__logOutBtn {
+		width: 100%;
+		display: flex;
+		flex-direction: row;
+		gap: 10px;
+		align-items: center;
+		justify-content: center;
+		padding: 10px;
+		color: #ffff;
+		background-color: $Dark_violet;
+		font-size: 16px;
+		transition: all 0.3s ease;
+		border-radius: 10px;
+		&:hover {
+			background-color: $Red;
+		}
+	}
+}
+
+.shortenerBlock {
+	flex: 1 1 75%;
+	@media (max-width: 1023.98px) {
+		flex: 1 1 100%;
+	}
+}

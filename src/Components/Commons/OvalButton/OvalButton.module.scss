@@ -19,6 +19,9 @@
 	@media (max-width: 767.98px) {
 		font-size: 16px;
 	}
+	a {
+		color: #fff;
+	}
 }
 .mod {
 	background-color: transparent;
@@ -28,5 +31,8 @@
 		background-color: $Cyan;
 		color: #fff;
 		transition: all 0.3s ease;
+	}
+	a {
+		color: $VeryDark_blue;
 	}
 }

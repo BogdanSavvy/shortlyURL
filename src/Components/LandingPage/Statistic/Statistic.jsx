@@ -1,15 +1,15 @@
 import style from './Statistic.module.scss';
-import recognitionImg from '../../images/icon-brand-recognition.svg';
-import recordsImg from '../../images/icon-detailed-records.svg';
-import customizableImg from '../../images/icon-fully-customizable.svg';
+import recognitionImg from '../../../images/icon-brand-recognition.svg';
+import recordsImg from '../../../images/icon-detailed-records.svg';
+import customizableImg from '../../../images/icon-fully-customizable.svg';
 
 const Statistic = () => {
 	return (
 		<div className={style.container}>
 			<h2>Advanced statistics</h2>
 			<p>
-				Track how your links are performing across the web with <br/> our advanced statistics
-				dashboard.
+				Track how your links are performing across the web with <br /> our advanced
+				statistics dashboard.
 			</p>
 			<div className={style.statistic}>
 				<div className={style.statistic__card}>
