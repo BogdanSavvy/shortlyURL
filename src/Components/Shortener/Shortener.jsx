@@ -1,15 +1,21 @@
 import style from './Shortener.module.scss';
-import { useState } from 'react';
-import { useFormik } from 'formik';
-import * as Yup from 'yup';
-import { getShortenLink } from '../../api/api';
+import wavesBg from '../../images/bg-shorten-desktop.svg';
 import { Input } from '../Commons/Input/Input';
 import { RoundedButton } from '../Commons/RoundedButton/RoundedButton';
 import { Snackbar, Alert } from '@mui/material';
 import { TransitionRight } from '../Commons/TransitionComponent/TransitionRight';
-import wavesBg from '../../images/bg-shorten-desktop.svg';
+import { useState } from 'react';
+import { useFormik } from 'formik';
+import * as Yup from 'yup';
+import { getShortenLink } from '../../api/api';
 
-const Shortener = ({ setShortenLinks, shortenLinks, myRef }) => {
+const Shortener = ({
+	myRef,
+	authUser,
+	shortenLinks,
+	setShortenLinks,
+	addLinksToFirestore,
+}) => {
 	const [showSnackBar, setShowSnackBar] = useState(false);
 	const [serverMessage, setServerMessage] = useState('');
 
@@ -22,9 +28,16 @@ const Shortener = ({ setShortenLinks, shortenLinks, myRef }) => {
 
 	const formik = useFormik({
 		initialValues: { link: '' },
-		onSubmit: values => {
+		onSubmit: async values => {
 			getShortenLink(values.link)
-				.then(res => res.data.ok && setShortenLinks([...shortenLinks, res.data.result]))
+				.then(response => {
+					if (response.data.ok) {
+						setShortenLinks([...shortenLinks, response.data.result]);
+						if (authUser) {
+							addLinksToFirestore(response.data.result);
+						}
+					}
+				})
 				.catch(err => {
 					setShowSnackBar(true);
 					setServerMessage(err.response.data.error);
@@ -37,8 +50,8 @@ const Shortener = ({ setShortenLinks, shortenLinks, myRef }) => {
 	});
 
 	return (
-		<div ref={myRef}>
-			<div className={style.shortener}>
+		<>
+			<div ref={myRef} className={style.shortener}>
 				<div className={style.shortener__container}>
 					<img src={wavesBg} alt="wavesBg" />
 					<form onSubmit={formik.handleSubmit}>
@@ -62,7 +75,7 @@ const Shortener = ({ setShortenLinks, shortenLinks, myRef }) => {
 					{serverMessage}
 				</Alert>
 			</Snackbar>
-		</div>
+		</>
 	);
 };
 

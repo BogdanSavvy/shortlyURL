@@ -8,28 +8,32 @@ import Login from './Components/Login/Login';
 import SignUp from './Components/SignUp/SignUp';
 import Profile from './Components/Profile/Profile';
 import Preloader from './Components/Commons/Preloader/Preloader';
+import NotFoundPage from './Components/NotFoudPage/NotFoundPage';
 
 const App = () => {
 	const myRef = useRef(null);
 
 	const [shortenLinks, setShortenLinks] = useState([]);
+
 	const [user, loading] = useAuthState(auth);
 
 	const scrollToElement = () => {
-		myRef.current.scrollIntoView({ behavior: 'smooth' });
+		myRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
 	};
+
 	return (
 		<>
 			{loading ? (
 				<Preloader />
 			) : (
 				<>
-					<Header user={user} />
+					<Header authUser={user} />
 					<Routes>
 						<Route
 							path="/"
 							element={
 								<LandingPage
+									authUser={user}
 									myRef={myRef}
 									scrollToElement={scrollToElement}
 									shortenLinks={shortenLinks}
@@ -37,8 +41,6 @@ const App = () => {
 								/>
 							}
 						/>
-						<Route path="/login" element={<Login authUser={user} />} />
-						<Route path="/signUp" element={<SignUp authUser={user} />} />
 						<Route
 							path="/profile"
 							element={
@@ -49,6 +51,9 @@ const App = () => {
 								/>
 							}
 						/>
+						<Route path="/login" element={<Login authUser={user} />} />
+						<Route path="/signUp" element={<SignUp authUser={user} />} />
+						<Route path="*" element={<NotFoundPage />} />
 					</Routes>
 				</>
 			)}

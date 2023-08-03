@@ -1,0 +1,30 @@
+@import '../../index.scss';
+
+.container {
+	max-width: 1140px;
+	margin: 0 auto;
+	padding: 0 15px;
+}
+
+.notFoundPage {
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 60px;
+	font-weight: 700;
+	text-align: center;
+	line-height: 135%;
+	gap: 40px;
+	@media (max-width: 1100px) {
+		font-size: 48px;
+	}
+	@media (max-width: 767.98px) {
+		font-size: 35px;
+		gap: 20px;
+		flex-direction: column;
+	}
+	@media (max-width: 424.98px) {
+		font-size: 30px;
+	}
+}

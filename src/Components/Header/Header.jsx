@@ -10,13 +10,13 @@ import { useSignOut } from 'react-firebase-hooks/auth';
 import Avatar from '@mui/material/Avatar';
 import { teal } from '@mui/material/colors';
 
-const Header = ({ user }) => {
-	const [isActive, setIsActive] = useState(false);
+const Header = ({ authUser }) => {
+	const [isBurgerActive, setIsBurgerActive] = useState(false);
+	const toggleBurger = () => setIsBurgerActive(!isBurgerActive);
 
 	const [signOut] = useSignOut(auth);
 
-	const toggleBurger = () => setIsActive(!isActive);
-
+	//*Adding pretty hover animation on links
 	useEffect(() => {
 		const handleMouseEnter = e => {
 			const tolerance = 10;
@@ -50,6 +50,7 @@ const Header = ({ user }) => {
 			});
 		};
 	}, []);
+
 	return (
 		<>
 			<header className={style.header}>
@@ -57,54 +58,104 @@ const Header = ({ user }) => {
 					<div className={style.header__menuBody}>
 						<div className={style.header__logo}>
 							<NavLink to="/">
-								<img src={logo} alt="logo" />
+								<img
+									onClick={() => {
+										setIsBurgerActive(false);
+									}}
+									src={logo}
+									alt="logo"
+								/>
 							</NavLink>
 						</div>
-						<nav className={`${style.navBody} ${isActive ? style.opened : ''}`}>
+						<nav className={`${style.navBody} ${isBurgerActive ? style.opened : ''}`}>
 							<ul className={style.navBody__list}>
-								<li>
-									<NavLink to="/features" className={style.navBody__link}>
+								<li
+									onClick={() => {
+										setIsBurgerActive(false);
+									}}>
+									<NavLink
+										style={({ isActive }) => {
+											return {
+												color: isActive ? 'black' : '',
+											};
+										}}
+										to="/features"
+										className={style.navBody__link}>
 										Features
 									</NavLink>
 								</li>
-								<li>
-									<NavLink to="/pricing" className={style.navBody__link}>
+								<li
+									onClick={() => {
+										setIsBurgerActive(false);
+									}}>
+									<NavLink
+										style={({ isActive }) => {
+											return {
+												color: isActive ? 'black' : '',
+											};
+										}}
+										to="/pricing"
+										className={style.navBody__link}>
 										Pricing
 									</NavLink>
 								</li>
-								<li>
-									<NavLink to="/resources" className={style.navBody__link}>
+								<li
+									onClick={() => {
+										setIsBurgerActive(false);
+									}}>
+									<NavLink
+										style={({ isActive }) => {
+											return {
+												color: isActive ? 'black' : '',
+											};
+										}}
+										to="/resources"
+										className={style.navBody__link}>
 										Resources
 									</NavLink>
 								</li>
 							</ul>
-							{!user ? (
+							{!authUser ? (
 								<div className={style.header__actions}>
-									<OvalButton modified={true}>
+									<OvalButton
+										onClick={() => {
+											setIsBurgerActive(false);
+										}}
+										modified={true}>
 										<NavLink to="/login">Log in</NavLink>
 									</OvalButton>
-									<OvalButton>
+									<OvalButton
+										onClick={() => {
+											setIsBurgerActive(false);
+										}}>
 										<NavLink to="/signUp">Sign up</NavLink>
 									</OvalButton>
 								</div>
 							) : (
 								<div className={style.header__miniProfile}>
-									{user && user.photoURL ? (
+									{authUser && authUser.photoURL ? (
 										<NavLink to="profile">
 											<Avatar
+												onClick={() => {
+													setIsBurgerActive(false);
+												}}
 												alt="User Avatar"
 												sx={{ width: 46, height: 46 }}
-												src={user.photoURL}
+												src={authUser.photoURL}
 											/>
 										</NavLink>
 									) : (
 										<NavLink to="profile">
-											<Avatar sx={{ bgcolor: teal[400], width: 46, height: 46 }}>
-												{user.email[0]}
+											<Avatar
+												onClick={() => {
+													setIsBurgerActive(false);
+												}}
+												sx={{ bgcolor: teal[400], width: 46, height: 46 }}>
+												{authUser.email[0]}
 											</Avatar>
 										</NavLink>
 									)}
-									{user.displayName && <p>{user.displayName}</p>}
+									{authUser.displayName && <p>{authUser.displayName}</p>}
 									<button title="Log Out" onClick={async () => await signOut()}>
 										<FontAwesomeIcon icon={faRightFromBracket} />
 									</button>
@@ -112,7 +163,7 @@ const Header = ({ user }) => {
 							)}
 						</nav>
 						<div
-							className={`${style.header__burger} ${isActive ? style.opened : ''}`}
+							className={`${style.header__burger} ${isBurgerActive ? style.opened : ''}`}
 							onClick={toggleBurger}>
 							<span></span>
 						</div>

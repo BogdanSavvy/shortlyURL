@@ -5,7 +5,12 @@ import Results from '../Results/Results';
 import Statistic from './Statistic/Statistic';
 import Footer from './Footer/Footer';
 
-const LandingPage = ({ scrollToElement, myRef, setShortenLinks, shortenLinks }) => {
+const LandingPage = ({
+	scrollToElement,
+	myRef,
+	setShortenLinks,
+	shortenLinks,
+}) => {
 	return (
 		<>
 			<div className={style.container}>

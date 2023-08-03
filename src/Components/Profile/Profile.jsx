@@ -1,4 +1,3 @@
-import { Navigate } from 'react-router-dom';
 import style from './Profile.module.scss';
 import Shortener from '../Shortener/Shortener';
 import Results from '../Results/Results';
@@ -6,10 +5,63 @@ import Avatar from '@mui/material/Avatar';
 import { teal } from '@mui/material/colors';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
+import { Navigate } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 import { useSignOut } from 'react-firebase-hooks/auth';
 import { auth } from '../../firebase/firebase-config';
+import {
+	collection,
+	addDoc,
+	onSnapshot,
+	doc,
+	deleteDoc,
+	serverTimestamp,
+	orderBy,
+	query,
+} from 'firebase/firestore';
+import { db } from '../../firebase/firebase-config';
 
 const Profile = ({ authUser, setShortenLinks, shortenLinks }) => {
+	//*A function that adds a result to Firestore
+	const addLinksToFirestore = async response => {
+		try {
+			return await addDoc(collection(db, 'shortlinks'), {
+				code: response.code,
+				originalLink: response.original_link,
+				shortLink: response.short_link,
+				userId: authUser.uid,
+				createdAt: serverTimestamp(),
+			});
+		} catch (error) {
+			console.error('Error adding document: ', error);
+		}
+	};
+
+	const [fireStoreData, setFireStoreData] = useState([]);
+
+	//*A function that receives data from Firestore and subscribes to updates
+	const getLinksFromFirestore = () => {
+		onSnapshot(
+			query(collection(db, 'shortlinks'), orderBy('createdAt', 'desc')),
+			snapshot => {
+				const array = [];
+				snapshot.docs.forEach(doc => array.push({ ...doc.data(), docId: doc.id }));
+				setFireStoreData(array);
+			}
+		);
+	};
+
+	//*A function that deleting doc from Firestore
+	const deleteDocFromFirestore = docId => {
+		const docRef = doc(db, 'shortlinks', docId);
+		deleteDoc(docRef);
+	};
+
+	//*Getting data from Firestore
+	useEffect(() => {
+		getLinksFromFirestore();
+	}, []);
+
 	const [signOut] = useSignOut(auth);
 
 	return (
@@ -32,7 +84,6 @@ const Profile = ({ authUser, setShortenLinks, shortenLinks }) => {
 										{authUser.email[0]}
 									</Avatar>
 								)}
-								{authUser.displayName && <p>{authUser.displayName}</p>}
 							</div>
 							<p className={style.profileCard__email}>{authUser.email}</p>
 							<button
@@ -42,10 +93,21 @@ const Profile = ({ authUser, setShortenLinks, shortenLinks }) => {
 							</button>
 						</div>
 						<div className={style.shortenerBlock}>
-							<Shortener shortenLinks={shortenLinks} setShortenLinks={setShortenLinks} />
+							<Shortener
+								setFireStoreData={setFireStoreData}
+								authUser={authUser}
+								addLinksToFirestore={addLinksToFirestore}
+								shortenLinks={shortenLinks}
+								setShortenLinks={setShortenLinks}
+							/>
 						</div>
 					</div>
-					<Results shortenLinks={shortenLinks} />
+					<Results
+						deleteDocFromFirestore={deleteDocFromFirestore}
+						fireStoreData={fireStoreData}
+						authUser={authUser}
+						shortenLinks={shortenLinks}
+					/>
 				</div>
 			)}
 		</>

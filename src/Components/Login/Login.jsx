@@ -42,7 +42,7 @@ const Login = ({ authUser }) => {
 	}, [error]);
 
 	return authUser ? (
-		<Navigate to="/" />
+		<Navigate to="/profile" />
 	) : (
 		<div className={style.loginScreen}>
 			<div className={style.loginBox}>

@@ -47,7 +47,7 @@ const SignUp = ({ authUser }) => {
 	});
 
 	return authUser ? (
-		<Navigate to="/" />
+		<Navigate to="/profile" />
 	) : (
 		<div className={style.signUpScreen}>
 			<div className={style.signUpBox}>
