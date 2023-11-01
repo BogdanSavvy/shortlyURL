@@ -29,19 +29,21 @@ const Shortener = ({
 	const formik = useFormik({
 		initialValues: { link: '' },
 		onSubmit: async values => {
-			getShortenLink(values.link)
-				.then(response => {
-					if (response.data.ok) {
-						setShortenLinks([...shortenLinks, response.data.result]);
-						if (authUser) {
-							addLinksToFirestore(response.data.result);
-						}
-					}
-				})
-				.catch(err => {
-					setShowSnackBar(true);
-					setServerMessage(err.response.data.error);
-				});
+			let response = await getShortenLink(values.link);
+
+			if (response.ok) {
+				let result = await response.json();
+
+				setShortenLinks([...shortenLinks, result]);
+
+				if (authUser) {
+					addLinksToFirestore( result );
+				}
+			} else {
+				let error = await response.json();
+				setShowSnackBar(true);
+				setServerMessage(error.message);
+			}
 			values.link = '';
 		},
 		validationSchema: Yup.object().shape({

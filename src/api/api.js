@@ -1,9 +1,15 @@
-import axios from 'axios';
-
-const instance = axios.create({
-	baseURL: 'https://api.shrtco.de/v2/',
-});
-
 export const getShortenLink = link => {
-	return instance.get(`shorten?url=${link}`);
+	const myHeaders = new Headers();
+	myHeaders.append('apikey', process.env.REACT_APP_URL_SHORTENER_API_KEY);
+
+	const raw = link;
+
+	const requestOptions = {
+		method: 'POST',
+		redirect: 'follow',
+		headers: myHeaders,
+		body: raw,
+	};
+
+	return fetch('https://api.apilayer.com/short_url/hash', requestOptions);
 };

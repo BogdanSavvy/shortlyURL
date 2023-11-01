@@ -26,9 +26,9 @@ const Profile = ({ authUser, setShortenLinks, shortenLinks }) => {
 	const addLinksToFirestore = async response => {
 		try {
 			return await addDoc(collection(db, 'shortlinks'), {
-				code: response.code,
-				originalLink: response.original_link,
-				shortLink: response.short_link,
+				code: response.hash,
+				originalLink: response.long_url,
+				shortLink: response.short_url,
 				userId: authUser.uid,
 				createdAt: serverTimestamp(),
 			});

@@ -17,8 +17,8 @@ const ResultItem = ({ originalLink, shortLink, deleteDocFromFirestore, docId }) 
 				setIsCopied(true);
 				setOpen(true);
 			})
-			.catch(err => {
-				console.error('Помилка копіювання тексту: ', err);
+			.catch(error => {
+				console.error('Помилка копіювання тексту: ', error);
 				setOpen(true);
 			});
 	};
@@ -48,7 +48,7 @@ const ResultItem = ({ originalLink, shortLink, deleteDocFromFirestore, docId }) 
 								</>
 							)}
 						</RoundedButton>
-						{docId && <button className={style.deleteBtn} onClick={() => deleteDocFromFirestore(docId)}>
+						{docId && <button title="Delete" className={style.deleteBtn} onClick={() => deleteDocFromFirestore(docId)}>
 							<FontAwesomeIcon icon={faTrash} size='2xl' />
 						</button>}
 					</div>

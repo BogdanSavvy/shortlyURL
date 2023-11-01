@@ -23,9 +23,9 @@ const Results = ({ shortenLinks, authUser, fireStoreData, deleteDocFromFirestore
 				<div className={style.container}>
 					{shortenLinks.map(resultItem => (
 						<ResultItem
-							key={resultItem.code}
-							originalLink={resultItem.original_link}
-							shortLink={resultItem.short_link}
+							key={resultItem.hash}
+							originalLink={resultItem.long_url}
+							shortLink={resultItem.short_url}
 						/>
 					))}
 				</div>
