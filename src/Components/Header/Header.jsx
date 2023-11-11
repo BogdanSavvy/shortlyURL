@@ -16,6 +16,30 @@ const Header = ({ authUser }) => {
 
 	const [signOut] = useSignOut(auth);
 
+	const routes = [
+		{
+			handleclick: () => {
+				setIsBurgerActive(false);
+			},
+			name: 'Features',
+			path: '/features',
+		},
+		{
+			handleclick: () => {
+				setIsBurgerActive(false);
+			},
+			name: 'Pricing',
+			path: '/pricing',
+		},
+		{
+			handleclick: () => {
+				setIsBurgerActive(false);
+			},
+			name: 'Resources',
+			path: '/resources',
+		},
+	];
+
 	//*Adding pretty hover animation on links
 	useEffect(() => {
 		const handleMouseEnter = e => {
@@ -69,51 +93,20 @@ const Header = ({ authUser }) => {
 						</div>
 						<nav className={`${style.navBody} ${isBurgerActive ? style.opened : ''}`}>
 							<ul className={style.navBody__list}>
-								<li
-									onClick={() => {
-										setIsBurgerActive(false);
-									}}>
-									<NavLink
-										style={({ isActive }) => {
-											return {
-												color: isActive ? 'black' : '',
-											};
-										}}
-										to="/features"
-										className={style.navBody__link}>
-										Features
-									</NavLink>
-								</li>
-								<li
-									onClick={() => {
-										setIsBurgerActive(false);
-									}}>
-									<NavLink
-										style={({ isActive }) => {
-											return {
-												color: isActive ? 'black' : '',
-											};
-										}}
-										to="/pricing"
-										className={style.navBody__link}>
-										Pricing
-									</NavLink>
-								</li>
-								<li
-									onClick={() => {
-										setIsBurgerActive(false);
-									}}>
-									<NavLink
-										style={({ isActive }) => {
-											return {
-												color: isActive ? 'black' : '',
-											};
-										}}
-										to="/resources"
-										className={style.navBody__link}>
-										Resources
-									</NavLink>
-								</li>
+								{routes.map(route => (
+									<li onClick={route.handleclick}>
+										<NavLink
+											style={({ isActive }) => {
+												return {
+													color: isActive ? 'black' : '',
+												};
+											}}
+											to={route.path}
+											className={style.navBody__link}>
+											{route.name}
+										</NavLink>
+									</li>
+								))}
 							</ul>
 							{!authUser ? (
 								<div className={style.header__actions}>
