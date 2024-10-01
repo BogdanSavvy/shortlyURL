@@ -6,8 +6,8 @@ const Description = ({ scrollToElement }) => {
 	return (
 		<div className={style.container}>
 			<div className={style.description}>
-				<h1>More than just shorten links</h1>
-				<p>
+				<h1 className={style.title}>More than just shorten links</h1>
+				<p className={style.text}>
 					Build your brand's recognition and get detailed <br /> insights on how your
 					links are performing.
 				</p>
